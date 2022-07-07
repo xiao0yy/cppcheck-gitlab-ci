@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+xml_file=$(mktemp)
+cppcheck --xml "$@" 2> "$xml_file"
+cppcheck-codequality --input-file="$xml_file" --output-file=cppcheck.json
